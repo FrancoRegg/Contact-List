@@ -1,15 +1,17 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { AddContact } from "../component/addContact";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
+
+export const Home = () => {
+	
+	return (
+	<div className="mt-2 me-4 d-flex justify-content-end">
+		<AddContact/>
 	</div>
-);
+	
+	
+	
+)
+	};
