@@ -7,19 +7,20 @@ import "../../styles/newContact.css";
 
 export const NewContact = () => {
   const { store, actions } = useContext(Context);
-  const [contact, setContact] = useState({ name: "", last_name: "", phone: "", email: "", address: "", agenda_slug:"Mis cojones 33" })
+  const [contact, setContact] = useState({ full_name: "", phone: "", email: "", address: "", agenda_slug: "mis_cojones_33" })
 
   console.log("CONTACTO", contact);
 
   const handleSubmint = (e) => {
     e.preventDefault()
-    fetch("https://playground.4geeks.com/apis/fake/contact/", {
+
+    fetch("https://playground.4geeks.com/apis/fake/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(contact)
     })
       .then(resp => resp.json())
-      .then(data => console.log("DATA",data))
+      .then(data => setContact(data))
       .catch(error => console.log(error))
   }
 
@@ -27,22 +28,14 @@ export const NewContact = () => {
   return (
     <div className="container ">
       <h1>agregar contacto</h1>
-      <form className="new-contact" onChange={handleSubmint}>
+      <form className="new-contact" onSubmit={handleSubmint}>
         <input 
           type="text" 
-          name="name" 
-          placeholder="Nombre" 
+          name="full_name" 
+          placeholder="Nombre completo" 
           className="form-control" 
-          value={contact.name} 
-          onChange={(e) => setContact({...contact, name: e.target.value })} 
-        />
-        <input 
-          type="text" 
-          name="last_name" 
-          placeholder="Apellido" 
-          className="form-control" 
-          value={contact.last_name} 
-          onChange={(e) => setContact({...contact, last_name: e.target.value })} 
+          value={contact.full_name} 
+          onChange={(e) => setContact({...contact, full_name: e.target.value })} 
         />
         <input 
           type="phone" 
@@ -68,8 +61,8 @@ export const NewContact = () => {
           value={contact.address} 
           onChange={(e) => setContact({...contact, address: e.target.value })} 
         />
+        <button>Añadir contacto</button>
       </form>
-      <button>Añadir contacto</button>
     </div>
   );
 }
