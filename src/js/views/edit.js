@@ -28,9 +28,10 @@ export const Edit = () => {
       .then(resp => resp.json())
       .then(data => console.log("DATOS PROMESA", data))
       .catch(error => console.log(error))
-    setTimeout(() => {
+    
+      setTimeout(() => {
       navigate("/")
-    }, 1000)
+    }, 2000)
 
   }
 
