@@ -8,7 +8,7 @@ export const Edit = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  console.log("DATOS",editContact)
+  console.log("DATOS", editContact)
 
   useEffect(() => {
     // Aquí puedes realizar una solicitud para obtener la información del contacto con el ID actual
@@ -26,10 +26,12 @@ export const Edit = () => {
       body: JSON.stringify(editContact)
     })
       .then(resp => resp.json())
-      .then(data => console.log("DATOS PROMESA",data))
+      .then(data => console.log("DATOS PROMESA", data))
       .catch(error => console.log(error))
-
+    setTimeout(() => {
       navigate("/")
+    }, 1000)
+
   }
 
   return (
@@ -66,7 +68,7 @@ export const Edit = () => {
             name="address"
             placeholder="Direccion"
             className="form-control"
-            value={editContact.address || ""} 
+            value={editContact.address || ""}
             onChange={(e) => setEditContact({ ...editContact, address: e.target.value })}
           />
           <button>guardar cambios</button>
