@@ -21,23 +21,24 @@
     margin: 1em;
 }
 .nombre-contacto{
-    border: 1px solid green;
     font-size: 22px;
     font-family: sans-serif;
     padding: 4px;
 }
+.fa-user, .fa-phone, .fa-envelope, .fa-map-pin{
+    font-size: 16px;
+    margin: 0 0.5em 0 0;
+    color: black
+}
 .telefono-contacto{
-    border: 1px solid yellow;
     font-size: 15px;
     margin: 0 0 0.5em 0;
 }
 .correo-contacto{
-    border: 1px solid purple;
     font-size: 15px;
     margin: 0 0 0.5em 0;
 }
 .direccion-contacto{
-    border: 1px solid brown;
     font-size: 15px;
     margin: 0 0 0.5em 0;
 }
@@ -50,8 +51,21 @@
     background: none;
 }
 .boton-contacto{
-    border: 1px solid aqua;
+    border-radius: 10px;
+    margin: 0.7em;
+    text-transform: capitalize;
+    background-color: black;
+    color: yellow;
+}
+.boton-contacto:hover{
+    
 }
 p{
     margin: 0;
+    color: #3f3e3e;
+}
+.botones-opciones{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
