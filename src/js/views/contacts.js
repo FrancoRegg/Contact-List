@@ -10,12 +10,9 @@ export const Contacts = () => {
 
   console.log("INFO CONT", infoContact);
 
-
+//Trae todos los contactos de una agenda en particular
   useEffect(() => {
-    fetch("https://playground.4geeks.com/apis/fake/contact/agenda/mis_cojones_33")
-      .then(resp => resp.json())
-      .then(data => setInfoContact(data))
-      .catch(error => console.log(error))
+    actions.getContact();
   }, [])
 
   const confirmDeleteContact = (id) => {
