@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import "../../styles/edit.css";
 
 export const Edit = () => {
-  const { store, actions } = useContext(Context);
   const [editContact, setEditContact] = useState({ full_name: "", phone: "", email: "", address: "", agenda_slug: "mis_cojones_33" })
   const { id } = useParams()
   const navigate = useNavigate()
