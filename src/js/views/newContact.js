@@ -23,7 +23,7 @@ export const NewContact = () => {
   }
   return (
     <div className="container ">
-      <h1>agregar contacto</h1>
+      <h1 className="titulo">agregar contacto</h1>
       <form className="new-contact" onSubmit={handleSubmint}>
         <input
           type="text"
@@ -57,8 +57,10 @@ export const NewContact = () => {
           value={contact.address}
           onChange={(e) => setContact({ ...contact, address: e.target.value })}
         />
-        <button>Añadir contacto</button>
-        <Link to="/"><i class="fas fa-arrow-left"></i></Link>
+        <div className="contenedor-opciones">
+          <button className="boton-contacto">Añadir contacto</button>
+          <Link className="boton-back" to="/"><i class="fas fa-arrow-left"></i></Link>
+        </div>
       </form>
     </div>
   );
