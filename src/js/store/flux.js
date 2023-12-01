@@ -46,17 +46,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify(contact)
 					})
-					if(!response.ok){
+					if (!response.ok) {
 						throw new Error(`HTTP error! Status: ${response.status}`);
 					}
 					const data = await response.json()
-					setStore ({contacts:[...store.contacts, data]}) //Agrego el nuevo contacto al estado local 
+					setStore({ contacts: [...store.contacts, data] }) //Agrego el nuevo contacto al estado local 
 				}
 				catch (error) {
 					console.log(error);
 				}
 			},
-
+			
 		}
 	};
 };
