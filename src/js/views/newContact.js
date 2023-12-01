@@ -21,8 +21,6 @@ export const NewContact = () => {
     }, 1000)
 
   }
-
-
   return (
     <div className="container ">
       <h1>agregar contacto</h1>
@@ -60,6 +58,7 @@ export const NewContact = () => {
           onChange={(e) => setContact({ ...contact, address: e.target.value })}
         />
         <button>Añadir contacto</button>
+        <Link to="/"><i class="fas fa-arrow-left"></i></Link>
       </form>
     </div>
   );
