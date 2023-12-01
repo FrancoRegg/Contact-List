@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						throw new Error(`HTTP error! Status: ${response.status}`);
 					}
 					const data = await response.json()
-					setStore ({contacts:data})
+					setStore ({contacts:[...store.contacts, data]}) //Agrego el nuevo contacto al estado local 
 				}
 				catch (error) {
 					console.log(error);
