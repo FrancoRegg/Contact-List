@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 export const Edit = () => {
   const { store, actions } = useContext(Context);
@@ -32,7 +32,6 @@ export const Edit = () => {
       setTimeout(() => {
       navigate("/")
     }, 2000)
-
   }
 
   return (
@@ -73,6 +72,7 @@ export const Edit = () => {
             onChange={(e) => setEditContact({ ...editContact, address: e.target.value })}
           />
           <button>guardar cambios</button>
+          <Link to="/"><i class="fas fa-arrow-left"></i></Link>
         </form>
       </div>
     </div>
