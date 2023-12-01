@@ -26,7 +26,7 @@ export const Contacts = () => {
 
   return (
     <div className="container">
-      <h1>TODOS LOS CONTACTOS</h1>
+      <h1 className="titulo">tus contactos</h1>
       <div className="lista-contactos">
         {store.contacts.map((value) => (
           <div className="datos-contactos" key={value.id}>
@@ -35,14 +35,14 @@ export const Contacts = () => {
             <p className="correo-contacto"><i className="fas fa-envelope"></i>{value.email}</p>
             <p className="direccion-contacto"><i className="fas fa-map-pin"></i>{value.address}</p>
             <Link to={`/edit-contact/${value.id}`}>
-              <button><i className="fas fa-pen"></i></button>
+              <button className="boton-editar"><i className="fas fa-pen"></i></button>
             </Link>
-            <button onClick={()=>confirmDeleteContact(value.id)}><i className="fas fa-trash"></i></button>
+            <button className="boton-eliminar" onClick={()=>confirmDeleteContact(value.id)}><i className="fas fa-trash"></i></button>
           </div>
         ))}
       </div>
       <Link to="/add-contact">
-        <button>nuevo contacto</button>
+        <button className="boton-contacto">nuevo contacto</button>
       </Link>
     </div>
   )
