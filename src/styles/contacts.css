@@ -1,0 +1,57 @@
+.container{
+    margin: 5% auto;
+    background-color: #d7d9beb8;
+    padding: 0;
+    height: auto;
+    width: 70%;
+}
+.titulo{
+    text-align: center;
+    font-family: fantasy;
+    font-size: 55px;
+    font-style: italic;
+    text-transform: capitalize;
+    background: #000000f0;
+    color: yellow;
+}
+.lista-contactos{
+    margin: 0 0 0 1em;
+}
+.datos-contactos{
+    margin: 1em;
+}
+.nombre-contacto{
+    border: 1px solid green;
+    font-size: 22px;
+    font-family: sans-serif;
+    padding: 4px;
+}
+.telefono-contacto{
+    border: 1px solid yellow;
+    font-size: 15px;
+    margin: 0 0 0.5em 0;
+}
+.correo-contacto{
+    border: 1px solid purple;
+    font-size: 15px;
+    margin: 0 0 0.5em 0;
+}
+.direccion-contacto{
+    border: 1px solid brown;
+    font-size: 15px;
+    margin: 0 0 0.5em 0;
+}
+.boton-editar{
+    border: none;
+    background: none;
+}
+.boton-eliminar{
+    border: none;
+    background: none;
+}
+.boton-contacto{
+    border: 1px solid aqua;
+}
+p{
+    margin: 0;
+}
