@@ -1,20 +1,36 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			contacts: []
 		},
 		actions: {
+
+			//Trae los contactos y los guarda en el store
+			getContact: async () => {
+				try {
+					const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/mis_cojones_33")
+					if (!response.ok) {
+						throw new Error(`HTTP error! Status: ${response.status}`);
+					}
+					const data = response.json()
+					setStore({ contacts: data })
+				} catch (error) {
+					console.log(error);
+				}
+
+			},
+
+
+
+
+
+
+
+
+
+
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
