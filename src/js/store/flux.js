@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						throw new Error(`HTTP error! Status: ${response.status}`);
 					}
 					const data = await response.json()
-					setStore ({contacts:data})
+					setStore({ contacts: data })
 				} catch (error) {
 					console.log(error);
 				}
@@ -37,7 +37,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				catch (error) {
 					console.log(error);
 				}
-			}
+			},
+			//Añadir nuevo contacto
+			addContact: async (contact) => {
+				try {
+					const response = await fetch("https://playground.4geeks.com/apis/fake/contact", {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify(contact)
+					})
+					if(!response.ok){
+						throw new Error(`HTTP error! Status: ${response.status}`);
+					}
+					const data = await response.json()
+					setStore ({contacts:data})
+				}
+				catch (error) {
+					console.log(error);
+				}
+			},
 
 		}
 	};
