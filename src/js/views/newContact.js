@@ -13,15 +13,19 @@ export const NewContact = () => {
 
   const handleSubmint = (e) => {
     e.preventDefault()
+   
+    
+    actions.addContact(contact)
+    
 
-    fetch("https://playground.4geeks.com/apis/fake/contact", {
+    /*fetch("https://playground.4geeks.com/apis/fake/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(contact)
     })
       .then(resp => resp.json())
       .then(data => setContact(data))
-      .catch(error => console.log(error))
+      .catch(error => console.log(error))*/
       
     setTimeout(() => {
       navigate("/")
