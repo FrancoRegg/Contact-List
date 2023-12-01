@@ -1,0 +1,15 @@
+.contenedor-opciones{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.boton-back{
+    border: 1px solid green;
+    margin: 0.7em;
+    border-radius: 50%;
+    padding: 0.3em;
+    background: black;
+    color: yellow;
+    font-size: 15px;
+}
