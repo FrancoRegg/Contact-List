@@ -1,15 +1,35 @@
 .contenedor-opciones{
-    border: 1px solid red;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 .boton-back{
-    border: 1px solid green;
     margin: 0.7em;
     border-radius: 50%;
     padding: 0.3em;
     background: black;
     color: yellow;
     font-size: 15px;
+}
+.boton-back:hover{
+    margin: 0.8em;
+    border-radius: 50%;
+    padding: 0.4em;
+    background: black;
+    color: yellow;
+    font-size: 15px;
+}
+.contenedor-inputs{
+    margin: 2em;
+    display: grid;
+}
+.fa-arrow-left{
+    padding: 0.3em;
+    font-size: 15px;
+}
+.form-contact{
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    border-radius: 7px;
+    border: none;
 }
