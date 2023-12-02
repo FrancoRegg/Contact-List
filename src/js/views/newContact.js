@@ -25,11 +25,12 @@ export const NewContact = () => {
     <div className="container ">
       <h1 className="titulo">agregar contacto</h1>
       <form className="new-contact" onSubmit={handleSubmint}>
+        <div className="contenedor-inputs">
         <input
           type="text"
           name="full_name"
           placeholder="Nombre completo"
-          className="form-control"
+          className="form-contact"
           value={contact.full_name}
           onChange={(e) => setContact({ ...contact, full_name: e.target.value })}
         />
@@ -37,7 +38,7 @@ export const NewContact = () => {
           type="phone"
           name="phone"
           placeholder="Telefono"
-          className="form-control"
+          className="form-contact"
           value={contact.phone}
           onChange={(e) => setContact({ ...contact, phone: e.target.value })}
         />
@@ -45,7 +46,7 @@ export const NewContact = () => {
           type="email"
           name="email"
           placeholder="Correo electronico"
-          className="form-control"
+          className="form-contact"
           value={contact.email}
           onChange={(e) => setContact({ ...contact, email: e.target.value })}
         />
@@ -53,10 +54,11 @@ export const NewContact = () => {
           type="text"
           name="address"
           placeholder="Direccion"
-          className="form-control"
+          className="form-contact"
           value={contact.address}
           onChange={(e) => setContact({ ...contact, address: e.target.value })}
         />
+        </div>
         <div className="contenedor-opciones">
           <button className="boton-contacto">Añadir contacto</button>
           <Link className="boton-back" to="/"><i class="fas fa-arrow-left"></i></Link>
