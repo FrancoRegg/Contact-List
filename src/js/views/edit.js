@@ -27,22 +27,22 @@ export const Edit = () => {
       .then(resp => resp.json())
       .then(data => console.log("DATOS PROMESA", data))
       .catch(error => console.log(error))
-    
-      setTimeout(() => {
+
+    setTimeout(() => {
       navigate("/")
     }, 2000)
   }
 
   return (
-    <div className="jumbotron">
-      <div className="container ">
-        <h1>editar Contacto</h1>
-        <form className="editar-contacto" onSubmit={handleSubmint}>
+    <div className="container ">
+      <h1 className="titulo">editar Contacto</h1>
+      <form className="editar-contacto" onSubmit={handleSubmint}>
+        <div className="contenedor-inputs">
           <input
             type="text"
             name="full_name"
             placeholder="Nombre completo"
-            className="form-control"
+            className="form-edit"
             value={editContact.full_name || ""}
             onChange={(e) => setEditContact({ ...editContact, full_name: e.target.value })}
           />
@@ -50,7 +50,7 @@ export const Edit = () => {
             type="phone"
             name="phone"
             placeholder="Telefono"
-            className="form-control"
+            className="form-edit"
             value={editContact.phone || ""}
             onChange={(e) => setEditContact({ ...editContact, phone: e.target.value })}
           />
@@ -58,7 +58,7 @@ export const Edit = () => {
             type="email"
             name="email"
             placeholder="Correo electronico"
-            className="form-control"
+            className="form-edit"
             value={editContact.email || ""}
             onChange={(e) => setEditContact({ ...editContact, email: e.target.value })}
           />
@@ -66,14 +66,16 @@ export const Edit = () => {
             type="text"
             name="address"
             placeholder="Direccion"
-            className="form-control"
+            className="form-edit"
             value={editContact.address || ""}
             onChange={(e) => setEditContact({ ...editContact, address: e.target.value })}
           />
-          <button>guardar cambios</button>
-          <Link to="/"><i class="fas fa-arrow-left"></i></Link>
-        </form>
-      </div>
+        </div>
+        <div className="contenedor-opciones">
+          <button className="boton-guardar">guardar cambios</button>
+          <Link className="boton-back" to="/"><i class="fas fa-arrow-left"></i></Link>
+        </div>
+      </form>
     </div>
   );
 };
