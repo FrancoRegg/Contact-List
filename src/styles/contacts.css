@@ -49,6 +49,7 @@
 .boton-eliminar{
     border: none;
     background: none;
+    color: red;
 }
 .boton-contacto{
     border-radius: 10px;
@@ -56,6 +57,7 @@
     text-transform: capitalize;
     background-color: black;
     color: yellow;
+    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.2);
 }
 p{
     margin: 0;
