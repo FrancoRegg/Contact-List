@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0 --port 3000",
     "build": "webpack --config webpack.prod.js",
     "deploy": "node deploy-to-github.js",
-    "dev": "node ./back/src/app.js"
+    "dev": "nodemon ./back/src/app.js"
   },
   "author": {
     "name": "Alejandro Sanchez",
@@ -51,6 +51,7 @@
     "gh-pages": "^6.1.1",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^3.1.0",
     "parse-github-url": "^1.0.2",
     "prettier": "^2.5.1",
     "remote-origin-url": "^2.0.0",
