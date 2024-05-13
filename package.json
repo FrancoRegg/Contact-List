@@ -66,7 +66,6 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mysql": "^2.18.1",
     "prop-types": "^15.7.2",
     "query-string": "^7.0.1",
     "react": "^18.2.0",
