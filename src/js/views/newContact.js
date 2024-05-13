@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Context } from "../store/appContext";
+import { Context } from "../store/appContext.js";
 
 import "../../styles/newContact.css";
 
@@ -13,9 +13,9 @@ export const NewContact = () => {
 
   const handleSubmint = (e) => {
     e.preventDefault()
-   
+
     actions.addContact(contact)
-      
+
     setTimeout(() => {
       navigate("/")
     }, 1000)
@@ -26,38 +26,38 @@ export const NewContact = () => {
       <h1 className="titulo">agregar contacto</h1>
       <form className="new-contact" onSubmit={handleSubmint}>
         <div className="contenedor-inputs">
-        <input
-          type="text"
-          name="full_name"
-          placeholder="Nombre completo"
-          className="form-contact"
-          value={contact.full_name}
-          onChange={(e) => setContact({ ...contact, full_name: e.target.value })}
-        />
-        <input
-          type="phone"
-          name="phone"
-          placeholder="Telefono"
-          className="form-contact"
-          value={contact.phone}
-          onChange={(e) => setContact({ ...contact, phone: e.target.value })}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo electronico"
-          className="form-contact"
-          value={contact.email}
-          onChange={(e) => setContact({ ...contact, email: e.target.value })}
-        />
-        <input
-          type="text"
-          name="address"
-          placeholder="Direccion"
-          className="form-contact"
-          value={contact.address}
-          onChange={(e) => setContact({ ...contact, address: e.target.value })}
-        />
+          <input
+            type="text"
+            name="full_name"
+            placeholder="Nombre completo"
+            className="form-contact"
+            value={contact.full_name}
+            onChange={(e) => setContact({ ...contact, full_name: e.target.value })}
+          />
+          <input
+            type="phone"
+            name="phone"
+            placeholder="Telefono"
+            className="form-contact"
+            value={contact.phone}
+            onChange={(e) => setContact({ ...contact, phone: e.target.value })}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electronico"
+            className="form-contact"
+            value={contact.email}
+            onChange={(e) => setContact({ ...contact, email: e.target.value })}
+          />
+          <input
+            type="text"
+            name="address"
+            placeholder="Direccion"
+            className="form-contact"
+            value={contact.address}
+            onChange={(e) => setContact({ ...contact, address: e.target.value })}
+          />
         </div>
         <div className="contenedor-opciones">
           <button className="boton-contacto">Añadir contacto</button>
