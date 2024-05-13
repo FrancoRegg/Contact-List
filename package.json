@@ -1,5 +1,5 @@
 {
-  "name": "react-hello-webapp",
+  "name": "agenda",
   "engines": {
     "node": "18.x"
   },
@@ -13,20 +13,6 @@
     "deploy": "node deploy-to-github.js",
     "dev": "nodemon ./back/src/app.js"
   },
-  "author": {
-    "name": "Alejandro Sanchez",
-    "url": "http://alesanchezr.com/"
-  },
-  "contributors": [
-    {
-      "name": "Alejandro Sanchez",
-      "url": "http://alesanchezr.com/"
-    },
-    {
-      "name": "Ignacio Cordoba",
-      "url": "http://github.com/nachovz"
-    }
-  ],
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.16.0",
