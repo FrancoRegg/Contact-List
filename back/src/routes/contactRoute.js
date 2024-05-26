@@ -1,20 +1,24 @@
+import { Router } from "express"
+import { getAllContacts, getContact, updateContact, createContact, deleteContact } from "../controllers/contactController.js"
+import middlewareAuth from "../middleware/middlewareAuth.js"
+
+const router = Router()
+router.use(middlewareAuth)
+
 
 //Mostrar contactos
-app.get('/', (req, res) => {
-    res.send('Hello World Everybody!')
-})
+router.get('/', getAllContacts)
+
+//Mostrar un contacto
+router.get('/:id', getContact)
 
 //Crear nuevo contacto
-app.post('/', (req, res) => {
-    res.send('Got a POST request')
-})
+router.post('/', createContact)
 
 //Modificar datos del contacto
-app.put('/contact', (req, res) => {
-    res.send('Got a PUT request at /user')
-})
+router.put('/:id', updateContact)
 
 //Eliminar contacto
-app.delete('/contact', (req, res) => {
-    res.send('Got a DELETE request at /user')
-})
+router.delete('/:id', deleteContact)
+
+export default router
