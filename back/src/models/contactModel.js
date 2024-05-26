@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/db";
-import User from "./userModel";
+import { sequelize } from "../config/db.js";
+import User from "./userModel.js";
 
 const contact = sequelize.define('contact', {
   id: {
@@ -47,6 +47,6 @@ const contact = sequelize.define('contact', {
 });
 
 User.hasMany(contact, { foreignKey: 'userId' });
-contact.belongsTo(user, { foreignKey: 'userId' });
+contact.belongsTo(User, { foreignKey: 'userId' });
 
 export default contact
