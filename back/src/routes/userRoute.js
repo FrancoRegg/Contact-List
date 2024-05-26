@@ -1,19 +1,9 @@
-//Mostrar contactos
-app.get('/', (req, res) => {
-    res.send('Hello World Everybody!')
-})
+import { Router } from 'express';
+import { register, login } from '../controllers/authController.js';
 
-//Crear nuevo usuario
-app.post('/', (req, res) => {
-    res.send('Got a POST request')
-})
+const router = Router();
 
-//Modificar datos del usuario
-app.put('/user', (req, res) => {
-    res.send('Got a PUT request at /user')
-})
+router.post('/register', register);
+router.post('/login', login);
 
-//Eliminar usuario
-app.delete('/user', (req, res) => {
-    res.send('Got a DELETE request at /user')
-})
+export default router;
