@@ -44,4 +44,13 @@ export const login = async (req, res) => {
   }
 }
 
+export const getAllUser = async (req, res) => {
+  try {
+    const response = await User.findAll()
+    res.send(response)
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+}
+
 
