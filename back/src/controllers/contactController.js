@@ -23,10 +23,18 @@ export const getContact = async (req, res) => {
 
 //Crear un nuevo contacto
 export const createContact = async (req, res) => {
-  const { nombre, apellido, telefono, email, foto, direccion, notas } = req.body;
-
   try {
-    const newContact = await Contact.create({
+    const { nombre, apellido, telefono, email, foto, direccion, notas } = req.body;
+
+    if (!req.user || !req.user.id) {
+      return res.status(401).json('Unauthorized: User not authenticated');
+    }
+
+    if (!nombre || !apellido || !telefono || !email) {
+      return res.status(400).json('Missing required fields');
+    }
+
+    const newContact = await contact.create({
       userId: req.user.id,
       nombre,
       apellido,
@@ -36,7 +44,7 @@ export const createContact = async (req, res) => {
       direccion,
       notas,
     });
-
+    console.log("NUEVOOOOOOOOOOO", newContact);
     res.status(201).json(newContact);
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
@@ -49,18 +57,18 @@ export const updateContact = async (req, res) => {
   const { nombre, apellido, telefono, email, foto, direccion, notas } = req.body;
 
   try {
-    const contact = await Contact.findByPk(id);
-    if (!contact) {
+    const Contact = await contact.findByPk(id);
+    if (!Contact) {
       return res.status(404).json({ message: 'Contact not found' });
     }
 
-    contact.nombre = nombre;
-    contact.apellido = apellido;
-    contact.telefono = telefono;
-    contact.email = email;
-    contact.foto = foto;
-    contact.direccion = direccion;
-    contact.notas = notas;
+    Contact.nombre = nombre;
+    Contact.apellido = apellido;
+    Contact.telefono = telefono;
+    Contact.email = email;
+    Contact.foto = foto;
+    Contact.direccion = direccion;
+    Contact.notas = notas;
 
     await contact.save();
     res.json(contact);
@@ -74,8 +82,8 @@ export const deleteContact = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const contact = await Contact.findByPk(id);
-    if (!contact) {
+    const Contact = await contact.findByPk(id);
+    if (!Contact) {
       return res.status(404).json({ message: 'Contact not found' });
     }
 
