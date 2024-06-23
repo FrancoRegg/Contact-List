@@ -7,13 +7,13 @@ router.use(middlewareAuth)
 
 
 //Mostrar contactos
-router.get('/', getAllContacts)
+router.get('/contacts', getAllContacts)
 
 //Mostrar un contacto
 router.get('/:id', getContact)
 
 //Crear nuevo contacto
-router.post('/', createContact)
+router.post('/create/contact', createContact)
 
 //Modificar datos del contacto
 router.put('/:id', updateContact)
