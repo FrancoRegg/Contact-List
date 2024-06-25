@@ -44,7 +44,6 @@ export const createContact = async (req, res) => {
       direccion,
       notas,
     });
-    console.log("NUEVOOOOOOOOOOO", newContact);
     res.status(201).json(newContact);
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
