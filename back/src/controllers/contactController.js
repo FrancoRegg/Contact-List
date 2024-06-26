@@ -4,6 +4,9 @@ import contact from "../models/contactModel.js";
 export const getAllContacts = async (req, res) => {
   try {
     const response = await contact.findAll()
+    if (response.length === 0) {
+      return res.status(400).send('There are no contacts')
+    }
     res.send(response)
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
@@ -14,7 +17,10 @@ export const getAllContacts = async (req, res) => {
 export const getContact = async (req, res) => {
   try {
     const { id } = req.params
-    const response = await contact.findOne(id)
+    const response = await contact.findByPk(id)
+    if (!response) {
+      return res.status(400).send('Contact not found')
+    }
     res.send(response)
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
@@ -44,33 +50,26 @@ export const createContact = async (req, res) => {
       direccion,
       notas,
     });
-    res.status(201).json(newContact);
+    if (newContact) {
+      res.status(201).json('Contact created successfully');
+    }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json('Server error');
   }
 };
 
 //Actualizar un contacto por su ID
 export const updateContact = async (req, res) => {
   const { id } = req.params;
-  const { nombre, apellido, telefono, email, foto, direccion, notas } = req.body;
+  const updateFields = req.body; //Obtener los campos a actualizar del cuerpo de la solicitud
 
   try {
     const Contact = await contact.findByPk(id);
     if (!Contact) {
       return res.status(404).json({ message: 'Contact not found' });
     }
-
-    Contact.nombre = nombre;
-    Contact.apellido = apellido;
-    Contact.telefono = telefono;
-    Contact.email = email;
-    Contact.foto = foto;
-    Contact.direccion = direccion;
-    Contact.notas = notas;
-
-    await contact.save();
-    res.json(contact);
+    await Contact.update(updateFields); //Actualiza solo los campos proporcionados
+    res.status(200).json('Contact updated successfully'); //Devuelve el contacto actualizado
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
@@ -86,7 +85,7 @@ export const deleteContact = async (req, res) => {
       return res.status(404).json({ message: 'Contact not found' });
     }
 
-    await contact.destroy();
+    await Contact.destroy();
     res.json({ message: 'Contact deleted' });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
