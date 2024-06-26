@@ -10,15 +10,15 @@ router.use(middlewareAuth)
 router.get('/contacts', getAllContacts)
 
 //Mostrar un contacto
-router.get('/:id', getContact)
+router.get('/contact/:id', getContact)
 
 //Crear nuevo contacto
-router.post('/create/contact', createContact)
+router.post('/contact', createContact)
 
 //Modificar datos del contacto
-router.put('/:id', updateContact)
+router.put('/contact/:id', updateContact)
 
 //Eliminar contacto
-router.delete('/:id', deleteContact)
+router.delete('/contact/:id', deleteContact)
 
 export default router
