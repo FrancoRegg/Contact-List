@@ -7,7 +7,7 @@ export const getAllUsers = async (req, res) => {
     const response = await User.findAll();
     res.send(response);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json('Server error');
   }
 };
 
@@ -18,7 +18,7 @@ export const getUser = async (req, res) => {
     const response = await User.findByPk(id)
     res.send(response)
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json('Server error');
   }
 }
 
@@ -51,3 +51,18 @@ export const updateUser = async (req, res) => {
 };
 
 //Eliminar un usuarios por ID
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json('User not found');
+    }
+
+    await user.destroy();
+    res.status(200).json('User successfully deleted');
+  } catch (error) {
+    res.status(500).json('Server error');
+  }
+};
