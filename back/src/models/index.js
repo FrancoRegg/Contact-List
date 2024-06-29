@@ -1,12 +1,12 @@
-'use strict';
+import fs from 'fs';
+import path from 'path';
+import Sequelize from 'sequelize';
+import process from 'process';
+import configJson from '../config/config.json';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = configJson[env];
 const db = {};
 
 let sequelize;
@@ -27,8 +27,10 @@ fs
     );
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
+    import(path.join(__dirname, file)).then(module => {
+      const model = module.default(sequelize, Sequelize.DataTypes);
+      db[model.name] = model;
+    });
   });
 
 Object.keys(db).forEach(modelName => {
@@ -40,4 +42,5 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;
+
