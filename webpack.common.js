@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 export default {
   entry: [
-    './src/js/index.js'
+    './src/front/js/index.js'
   ],
   output: {
     filename: 'bundle.js',
