@@ -2,62 +2,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			users: [],
-			contacts: []
+			contacts: [
+				// Ejemplo de datos estáticos
+				{ id: 1, name: "John Doe", email: "john@example.com", phone: "123456789" },
+				{ id: 2, name: "Jane Smith", email: "jane@example.com", phone: "987654321" }
+			]
 		},
 		actions: {
-
-			//Trae los contactos y los guarda en el store
-			getContact: async () => {
-				try {
-					const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/mis_cojones_33")
-					if (!response.ok) {
-						throw new Error(`HTTP error! Status: ${response.status}`);
-					}
-					const data = await response.json()
-					setStore({ contacts: data })
-				} catch (error) {
-					console.log(error);
-				}
-
+			// Añadir contacto
+			addContact: (contact) => {
+				const store = getStore();
+				setStore({ contacts: [...store.contacts, { id: Date.now(), ...contact }] });
 			},
-			//Elimina un contacto segun su id
-			deleteContact: async (id) => {
-				try {
-					const response = await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
-						method: 'DELETE',
-						headers: { "Content-Type": "application/json" }
-					})
-					if (!response.ok) {
-						throw new Error(`HTTP error! Status: ${response.status}`);
-					}
-					setStore((prevStore) => ({
-						...prevStore,
-						contacts: prevStore.contacts.filter((contact) => contact.id !== id),
-					}));
-				}
-				catch (error) {
-					console.log(error);
-				}
-			},
-			//Añadir nuevo contacto
-			addContact: async (contact) => {
-				try {
-					const response = await fetch("https://playground.4geeks.com/apis/fake/contact", {
-						method: "POST",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify(contact)
-					})
-					if (!response.ok) {
-						throw new Error(`HTTP error! Status: ${response.status}`);
-					}
-					const data = await response.json()
-					setStore({ contacts: [...store.contacts, data] }) //Agrego el nuevo contacto al estado local 
-				}
-				catch (error) {
-					console.log(error);
-				}
-			},
-
+			// Eliminar contacto
+			deleteContact: (id) => {
+				const store = getStore();
+				setStore({ contacts: store.contacts.filter(contact => contact.id !== id) });
+			}
 		}
 	};
 };
