@@ -9,6 +9,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			// Mostrar contactos 
+			getContact: () => {
+				const store = getStore();
+				console.log("Store flux", store);
+			},
+
 			// Añadir contacto
 			addContact: (contact) => {
 				const store = getStore();
